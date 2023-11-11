@@ -43,4 +43,6 @@ Hint: you will need the {arules} package. You will create a songList.csv file wi
 separator of all "," (comma) and use the function
 read.transactions() to read it correctly as a set of transactions.
 
+Topic D: Clustering with the k-means algorithm and DBSCAN
+---------------------------------------------------------
 
