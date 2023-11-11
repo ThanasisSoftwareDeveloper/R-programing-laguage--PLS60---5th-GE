@@ -1,0 +1,13 @@
+Topic C2: Discovery of Correlation Rules
+
+
+require(arules)
+data<- read.transactions(file="C:\\Program Files\\R\\R-4.2.0\\songList.csv",format="basket",sep=",")
+#με το rules, η εύρεση κανόνων συσχέτισης
+# επίσης, κατώφλι υποστήριξης (sup) το 0.5 και εμπιστοσύνης (sup) το 0.5
+song_rules <- apriori(data,sup = 0.5, conf = 0.5, target="rules")
+inspect(song_rules)
+# με το closed, η εύρεση κλειστών συχνών στοιχειοσυνόλων
+song_rules <- apriori(data,sup = 0.5, conf = 0.5, target="closed")
+inspect(song_rules)
+
