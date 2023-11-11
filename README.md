@@ -45,4 +45,46 @@ read.transactions() to read it correctly as a set of transactions.
 
 Topic D: Clustering with the k-means algorithm and DBSCAN
 ---------------------------------------------------------
+In this exercise we will deal with two clustering algorithms, k-means
+and DBSCAN. To see their specifics we will use a synthetic corpus
+data that simulates ring clusters. We will use the synthetic.csv file with
+this dataset, which is provided with the pronunciation. After the
+save it in a folder of your choice locally on your computer, you will load it
+in R and visualize it using the following commands, after installing the
+{readr}, {ggplot2}, {cluster} and {dbscan} libraries:
+library(readr)
+library(ggplot2)
+library(gggplot(gggdr), library(cluster)
+library(dbscan)
+synthetic <- read_csv("[your folder]/synthetic.csv")
+qplot(synthetic$att1, synthetic$att2, color = synthetic$label, data = synthetic)
+As you will notice, the data is indeed (almost) organized into 3 clusters,
+the core, the first_ring and the second_ring.
+
+According to the theory (paragraph 7.2.5 from the book), the k-means algorithm is not
+suitable for all types of data. Let us see how it deals with
+specific data, for k=3:
+kmeansCluster <- kmeans(synthetic[,1:2], center=3)
+qplot(synthetic$att1, synthetic$att2, color = as.character(kmeansCluster$cluster),data =
+synthetic). 
+Indeed, the algorithm could not correctly cluster the data because of the
+the shape of the original clusters.
+
+D1 : Apply the DBSCAN algorithm by testing different parameters eps=
+[0.5, 1, 2 or 3], minPts=[5, 15, or 20] and print a graph like the one above
+showing whether DBSCAN is correctly clustering the data. Indicate for which
+eps and minPts parameters achieved the best result.
+Hint: use the functions and libraries listed in
+The use of the libraries and libraries mentioned in the pronunciation, no other is needed.
+
+D2: The given format of the data makes it impossible for the correct clustering by the
+k-means algorithm. However, if you look more closely at the data, it can be used with a simple
+trick can work perfectly. Create a new column in your data, named
+mystery that calculates for each row the Euclidean distance from the origin
+of the axes (0,0). Then run the k-means algorithm based only on this new column
+and print the graph with the result of the clustering.
+Hint: use the functions and libraries mentioned in
+the pronunciation, you do not need any other.
+
+
 
