@@ -1,0 +1,31 @@
+#Topic D/1 answer:
+
+Combinations of the parameters eps= [0.5, 1, 2 or 3], minPts [5, 15, or 20] were made and found
+that with the parameters eps(epsilon)=3 and minPts(min Points)=5 the
+best result:
+library(readr)
+library(ggplot2)
+library(cluster)
+library(dbscan)
+synthetic <- read_csv(file="C:\\Program Files\\R\\synthetic.csv")
+dbscanCluster <- dbscan(synthetic[,1:2], eps=3, minPts=5)
+qplot(synthetic$att1, synthetic$att2, colour=as.character(dbscanCluster$cluster), data=synthetic)
+
+
+#Topic D/2 answer:
+
+library(readr)
+library(ggplot2)
+library(cluster)
+library(dbscan)
+synthetic <- read_csv(file="C:\\Program Files\\R\\synthetic.csv")
+kmeansCluster <- kmeans(synthetic[,4], center=3)
+qplot(synthetic$att1, synthetic$att2, colour = as.character(kmeansCluster$cluster),data = synthetic)
+
+
+> kmeansCluster <- kmeans(synthetic[,4], center=3)
+Error: Can't subset columns that don't exist.
+x Location 4 doesn't exist.
+i There are only 3 columns.
+
+
